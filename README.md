@@ -1,30 +1,9 @@
 # b2-transaction-tracker
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/oregonpillow/b2-transaction-tracker">
-    <img src="images/logo.png" alt="Logo" width="170" height="150">
-  </a>
-
-<h3 align="center">Backblaze Transaction Tracker</h3>
-
-  <p align="center">
-    A tool to track your backblaze api transactions
-    <br />
-    <a href="https://github.com/oregonpillow/b2-transaction-tracker/issues">Report Bug / Suggest Feature</a>
-
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![db beaver screenshot][example-screenshot]
 
 This is a simple tool built on [selenium](https://selenium-python.readthedocs.io/), to scrape api transactions from the [b2 cloud-storage](https://www.backblaze.com/b2/cloud-storage.html) reports. Transactions are stored in SQL. 
 
@@ -108,29 +87,11 @@ To schedule automatic collection of api transactions it's recommended to use cro
 
 | ENV      | Description | Default |
 | ----------- | ----------- | --- |
-| B2_EMAIL      | Title       | --- |
-| B2_PWD   | Text        | --- |
-| DB_HOST   | Text        | **b2-db** (name of sql container name) |
-| DB_USER   | Text        | **user** must match MYSQL_USER set in SQL container|
-| DB_PWD   | Text        | **password** must match MYSQL_PASSWORD set in SQL container|
-| DB_PORT   | Text        | **3306** default sql port|
-| DB_NAME   | Text        | **b2**  name of sql database name, must match MYSQL_DATABASE set in SQL container|
-| TIMESTAMP   | When set to **TRUE**, SQL date entry includes time as well "2023-01-01 20:30:45" (each entry is unique and kept). When set to **FALSE**, only the date is recorded "2023-02-07 00:00:00", meaning that subsequent runs within same day will overwrite any previous data recorded that day (keeps the latest)       | TRUE |
-
-
-## Acknowledgments
-
-* [Readme template](https://github.com/othneildrew/Best-README-Template)
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/oregonpillow/b2-transaction-tracker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/oregonpillow/b2-transaction-tracker/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/oregonpillow/b2-transaction-tracker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/oregonpillow/b2-transaction-tracker/issues
-[example-screenshot]: images/sql-screenshot-example.png
+| B2_EMAIL      | b2 email       | --- |
+| B2_PWD   | b2 password        | --- |
+| DB_HOST   | name of sql container name        | **b2-db** |
+| DB_USER   | sql user, must match MYSQL_USER set in SQL container        | **user** |
+| DB_PWD   | sql password, must match MYSQL_PASSWORD set in SQL container        | **password** |
+| DB_PORT   | default sql port        | **3306** |
+| DB_NAME   | sql database name, must match MYSQL_DATABASE set in SQL container        | **b2** |
+| TIMESTAMP   | When set to **TRUE**, SQL date entry includes time as well "2023-01-01 20:30:45" (each entry is unique and kept). When set to **FALSE**, only the date is recorded "2023-02-07 00:00:00", meaning that subsequent runs within same day will overwrite any previous data recorded that day (keeps the latest)       | **TRUE** |
