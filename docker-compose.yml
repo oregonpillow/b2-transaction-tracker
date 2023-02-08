@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    container_name: b2-db
+    network_mode: b2
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root  # CHANGE THIS
+      - MYSQL_DATABASE=b2
+      - MYSQL_USER=user           # CHANGE THIS
+      - MYSQL_PASSWORD=pasword    # CHANGE THIS
+    restart: unless-stopped
+      
+  firefox:
+    image: seleniarm/standalone-firefox:109.0  # mac m1
+    #image: selenium/standalone-firefox:109.0 # amd64
+    container_name: firefox
+    network_mode: b2
+    ports:
+      - 4444:4444
+    restart: unless-stopped
