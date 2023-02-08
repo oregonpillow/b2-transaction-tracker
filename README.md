@@ -5,7 +5,7 @@
 ## About The Project
 
 
-This is a simple tool built on [selenium](https://selenium-python.readthedocs.io/), to scrape api transactions from the [b2 cloud-storage](https://www.backblaze.com/b2/cloud-storage.html) reports. Transactions are stored in SQL. 
+This is a simple tool built on [selenium](https://selenium-python.readthedocs.io/), to scrape api transactions from Backblaze's [b2 cloud-storage](https://www.backblaze.com/b2/cloud-storage.html) reports. Transactions are stored in SQL. 
 
 ## Why this exists?
 
