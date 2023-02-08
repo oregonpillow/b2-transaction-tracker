@@ -43,7 +43,7 @@ Example:
    ```bash
    echo 'export B2_EMAIL="<YOUR EMAIL HERE>"' >> ~/.zshrc
 
-   echo 'export B2_PWD="<YOUR EMAIL HERE>"' >> ~/.zshrc
+   echo 'export B2_PWD="<YOUR PASSWORD HERE>"' >> ~/.zshrc
 
    # or replace with your respective shell environment. E.g. for bash ~/.bashrc
    ```
