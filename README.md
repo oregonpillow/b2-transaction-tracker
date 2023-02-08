@@ -7,6 +7,9 @@
 
 This is a simple tool built on [selenium](https://selenium-python.readthedocs.io/), to scrape api transactions from Backblaze's [b2 cloud-storage](https://www.backblaze.com/b2/cloud-storage.html) reports. Transactions are stored in SQL. 
 
+Example SQL:
+![db beaver example](./screenshot.png)
+
 ## Why this exists?
 
 **tl;dr** I was annoyed that Backblaze does not offer the ability to gather your api transactions in an automated way, e.g. through their [b2 cli](https://www.backblaze.com/b2/docs/quick_command_line.html).
@@ -83,8 +86,6 @@ This is a simple tool built on [selenium](https://selenium-python.readthedocs.io
 
 To schedule automatic collection of api transactions it's recommended to use cron schedule this container.
 
-Example SQL:
-![db beaver example](./screenshot.png)
 
 
 
