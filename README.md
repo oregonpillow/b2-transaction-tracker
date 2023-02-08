@@ -83,6 +83,11 @@ This is a simple tool built on [selenium](https://selenium-python.readthedocs.io
 
 To schedule automatic collection of api transactions it's recommended to use cron schedule this container.
 
+Example SQL:
+![db beaver example](./screenshot.png)
+
+
+
 ## b2-transaction-tracker Environment Variables
 
 | ENV      | Description | Default |
