@@ -13,11 +13,6 @@ Example:
 
 Modern backup solutions can backup your data directly to the cloud using the b2 api. This means that deduplication, snapshots and compression can all be performed in your cloud storage blob directly. However, the number of api transactions is non-trivial for sufficiently large backups and calculating the transaction costs with any amount of granularity i.e day to day or hour to hour is not possible currently. In theory you could expose the api transaction calls in your respective backup client but this is messy and prone to mistakes. E.g. it may require re-forking your backup client's codebase every time they perform a major update or having to re-merge everytime they update. Furthermore, the metrics that Backblaze counts are the only ones that really matter since those are the metrics that contribute towards your final bill. So i think it makes more sense to get the data "from the horse's mouth". My wish is that Backblaze implement the ability to pull the api counts from their b2 cli. Backblaze, are you reading this? :)
 
-## Prerequisites
-
-- **YOU MUST DISABLE 2FA** on your account for this tool to work. Do not use this tool if this is unacceptable to you. If there's a better way for this tool to work, I welcome any suggestions.
-
-- Valid credentials to your Backblaze account. The same username/password you use to login to their website.
 
 ## Getting Started
 
@@ -59,8 +54,8 @@ run the compose file:
 
 ---
 
-_m1 users: change the selenium image from
-'selenium' to 'seleniarm' in the compose file_
+*m1 users: change the selenium image from
+'selenium' to 'seleniarm' in the compose file*
 
 ---
 
@@ -84,9 +79,9 @@ docker run \
 
 ---
 
-_DB_USER must match MYSQL_USER_
+*DB_USER must match MYSQL_USER*
 
-_DB_PWD must match MYSQL_PASSWORD_
+*DB_PWD must match MYSQL_PASSWORD*
 
 ---
 
@@ -94,15 +89,35 @@ The container typically takes about 10 seconds to run.
 
 To schedule automatic collection of api transactions I recommend using cron to schedule this container. Be sure your environment variables are sourced correctly if you choose this method.
 
-## b2-transaction-tracker Environment Variables
+## Environment Variables
 
-| ENV       | Description                                                                                                                                                                                                                                                                                                  | Default      |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ |
-| B2_EMAIL  | b2 email                                                                                                                                                                                                                                                                                                     | ---          |
-| B2_PWD    | b2 password                                                                                                                                                                                                                                                                                                  | ---          |
-| DB_HOST   | name of sql container name                                                                                                                                                                                                                                                                                   | **b2-db**    |
-| DB_USER   | sql user, must match MYSQL_USER set in SQL container                                                                                                                                                                                                                                                         | **user**     |
-| DB_PWD    | sql password, must match MYSQL_PASSWORD set in SQL container                                                                                                                                                                                                                                                 | **password** |
-| DB_PORT   | default sql port                                                                                                                                                                                                                                                                                             | **3306**     |
-| DB_NAME   | sql database name, must match MYSQL_DATABASE set in SQL container                                                                                                                                                                                                                                            | **b2**       |
-| TIMESTAMP | When set to **TRUE**, SQL date entry includes time as well "2023-01-01 20:30:45" (each entry is unique and kept). When set to **FALSE**, only the date is recorded "2023-02-07 00:00:00", meaning that subsequent runs within same day will overwrite any previous data recorded that day (keeps the latest) | **TRUE**     |
+| ENV      | Description | Default |
+| ----------- | ----------- | --- |
+| B2_EMAIL      | b2 email       | --- |
+| B2_PWD   | b2 password        | --- |
+| DB_HOST   | name of sql container name        | **b2-db** |
+| DB_USER   | sql user, must match MYSQL_USER set in SQL container        | **user** |
+| DB_PWD   | sql password, must match MYSQL_PASSWORD set in SQL container        | **password** |
+| DB_PORT   | default sql port        | **3306** |
+| DB_NAME   | sql database name, must match MYSQL_DATABASE set in SQL container        | **b2** |
+| TIMESTAMP   | When set to **TRUE**, SQL date entry includes time as well "2023-01-01 20:30:45" (each entry is unique and kept). When set to **FALSE**, only the date is recorded "2023-02-07 00:00:00", meaning that subsequent runs within same day will overwrite any previous data recorded that day (keeps the latest)       | **TRUE** |
+| B2_TOTP      | Backblaze 2FA Generator key (see instructions below)       | --- |
+
+
+## Using two-factor authentication (2FA)
+
+You can use the tool with 2FA enabled on your Backbaze account. In order to do this, you'll need a copy of your Backblaze TOTP private key.
+
+Sign in to https://www.backblaze.com/
+
+   --> My Settings
+
+   --> Security: Sign In Settings
+
+   --> Two-Factor Authentication: "on"
+
+   --> What Authentication Method?: "Authentication Application"
+
+   --> Click the toggle link "Or enter key manually..."
+
+   --> Copy the Key, this is your private key for generating TOTP codes. Set this variable to B2_TOTP.
