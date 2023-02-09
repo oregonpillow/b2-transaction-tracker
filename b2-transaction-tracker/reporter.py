@@ -6,15 +6,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
 from transactions import class_a, class_b, class_c
 from db_writer import DataDumper
-
+import pyotp
 
 
 class Reporter():
 
 
     def __init__(self, b2_email, b2_pwd, db_host='b2-db', db_user='user', db_pwd='password', 
-        db_port=3306, db_name="b2", timestamp='true'):
+        db_port=3306, db_name="b2", timestamp='true', totp_key='false'):
 
+        self.totp_key = str(totp_key)
         self.email = b2_email
         self.password = b2_pwd
         self.login_url = "https://secure.backblaze.com/user_signin.htm"
@@ -56,6 +57,12 @@ class Reporter():
         pwd_elem = self.driver.find_element(By.NAME, "password-field")
         pwd_elem.send_keys(self.password)
         pwd_elem.send_keys(Keys.RETURN)
+
+        if self.totp_key.lower() != 'false':
+            totp = pyotp.TOTP(self.totp_key).now()
+            code_elem = self.driver.find_element(By.NAME, "code-field")
+            code_elem.send_keys(totp)
+            code_elem.send_keys(Keys.RETURN)
 
     def display_transactions(self):
 

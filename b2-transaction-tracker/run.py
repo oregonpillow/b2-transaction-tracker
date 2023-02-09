@@ -10,4 +10,5 @@ instance = Reporter(
     db_port = os.environ.get('DB_PORT', '3306'),
     db_name = os.environ.get('DB_NAME', 'b2'),
     timestamp = os.environ.get('TIMESTAMP', 'true'),
-    )
+    totp_key = os.environ.get('B2_TOTP', 'false'),
+)

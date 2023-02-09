@@ -1,2 +1,3 @@
 selenium==4.8.0
 mysql-connector==2.2.9
+pyotp==2.8.0
