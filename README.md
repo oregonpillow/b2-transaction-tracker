@@ -38,13 +38,20 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
    # or replace with your respective shell environment. E.g. for bash ~/.bashrc
    ```
 
-4. Start Selenium + SQL containers
+
+4. Build b2-transaction-tracker docker
+
+```bash
+ docker build -t b2-transaction-tracker .
+```
+
+5. Configure and run compose file
 
    Update the following SQL variables in the docker-compose:
 
-- MYSQL_ROOT_PASSWORD
-- MYSQL_USER
-- MYSQL_PASSWORD
+   - MYSQL_ROOT_PASSWORD
+   - MYSQL_USER
+   - MYSQL_PASSWORD
 
 run the compose file:
 
@@ -58,12 +65,6 @@ run the compose file:
 'selenium' to 'seleniarm' in the compose file*
 
 ---
-
-5. Build b2-transaction-tracker docker
-
-```bash
- docker build -t b2-transaction-tracker .
-```
 
 6. Run the container
 
@@ -106,7 +107,7 @@ To schedule automatic collection of api transactions I recommend using cron to s
 
 ## Using two-factor authentication (2FA)
 
-You can use the tool with 2FA enabled on your Backbaze account. In order to do this, you'll need a copy of your Backblaze TOTP private key.
+You can use the tool with 2FA enabled on your Backbaze account. In order to do this, you'll need a copy of your Backblaze TOTP private key. If you already have 2FA enabled on your account, you might need to disable then re-enable it to get this key.
 
 Sign in to https://www.backblaze.com/
 
