@@ -16,7 +16,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
 
 ## Getting Started
 
-1. Clone repo
+### 1. Clone the repo
 
    ```bash
    git clone https://github.com/oregonpillow/b2-transaction-tracker.git
@@ -24,11 +24,11 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
    cd b2-transaction-tracker
    ```
 
-2. Create docker-network
+### 2. Create a docker-network
    ```bash
    docker network create b2
    ```
-3. Export your B2 Username / Password to your shell environment
+### 3. Export your B2 username / password
 
    ```bash
    echo 'export B2_EMAIL="<YOUR EMAIL HERE>"' >> ~/.zshrc
@@ -39,13 +39,13 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
    ```
 
 
-4. Build b2-transaction-tracker docker
+### 4. Build the b2-transaction-tracker image
 
 ```bash
  docker build -t b2-transaction-tracker .
 ```
 
-5. Configure and run compose file
+### 5. Modify the docker-compose file
 
    Update the following SQL variables in the docker-compose:
 
@@ -53,7 +53,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
    - MYSQL_USER
    - MYSQL_PASSWORD
 
-run the compose file:
+### 6. Run the docker-compose file 
 
 ```bash
  docker-compose up -d
@@ -66,7 +66,7 @@ run the compose file:
 
 ---
 
-6. Run the container
+### 6. Run the b2-transaction-tracker
 
 ```bash
 docker run \
