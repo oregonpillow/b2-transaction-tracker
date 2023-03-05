@@ -23,7 +23,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
     + [4. Build the b2-transaction-tracker image](#4-build-the-b2-transaction-tracker-image)
     + [5. Modify the docker-compose file](#5-modify-the-docker-compose-file)
     + [6. Run the docker-compose file](#6-run-the-docker-compose-file)
-    + [7. Run the b2-transaction-tracker](#7-run-the-b2-transaction-tracker)
+    + [7. Run the b2-transaction-tracker container](#7-run-the-b2-transaction-tracker-container)
   * [Environment Variables](#environment-variables)
   * [Two-factor authentication](#two-factor-authentication)
 
@@ -81,7 +81,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
 
 ---
 
-### 7. Run the b2-transaction-tracker
+### 7. Run the b2-transaction-tracker container
 
 ```bash
 docker run \
