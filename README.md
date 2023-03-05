@@ -16,6 +16,19 @@ Example:
 Modern backup solutions can backup your data directly to the cloud using the b2 api. This means that deduplication, snapshots and compression can all be performed in your cloud storage blob directly. However, the number of api transactions is non-trivial for sufficiently large backups and calculating the transaction costs with any amount of granularity i.e day to day or hour to hour is not possible currently. In theory you could expose the api transaction calls in your respective backup client but this is messy and prone to mistakes. E.g. it may require re-forking your backup client's codebase every time they perform a major update or having to re-merge everytime they update. Furthermore, the metrics that Backblaze counts are the only ones that really matter since those are the metrics that contribute towards your final bill. So i think it makes more sense to get the data "from the horse's mouth". My wish is that Backblaze implement the ability to pull the api counts from their b2 cli. Backblaze, are you reading this? :)
 
 
+  * [Getting Started](#getting-started)
+    + [1. Clone the repo](#1-clone-the-repo)
+    + [2. Create a docker-network](#2-create-a-docker-network)
+    + [3. Export your b2 username and password](#3-export-your-b2-username-and-password)
+    + [4. Build the b2-transaction-tracker image](#4-build-the-b2-transaction-tracker-image)
+    + [5. Modify the docker-compose file](#5-modify-the-docker-compose-file)
+    + [6. Run the docker-compose file](#6-run-the-docker-compose-file)
+    + [7. Run the b2-transaction-tracker](#7-run-the-b2-transaction-tracker)
+  * [Environment Variables](#environment-variables)
+  * [two-factor authentication](#two-factor-authentication)
+
+
+
 ## Getting Started
 
 ### 1. Clone the repo
@@ -30,7 +43,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
    ```bash
    docker network create b2
    ```
-### 3. Export your b2 username / password
+### 3. Export your b2 username and password
 
    ```bash
    echo 'export B2_EMAIL="<YOUR EMAIL HERE>"' >> ~/.zshrc
@@ -68,7 +81,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
 
 ---
 
-### 6. Run the b2-transaction-tracker
+### 7. Run the b2-transaction-tracker
 
 ```bash
 docker run \
@@ -107,7 +120,7 @@ To schedule automatic collection of api transactions I recommend using cron to s
 | B2_TOTP      | Backblaze 2FA Generator key (see instructions below)       | --- |
 
 
-## Using two-factor authentication (2FA)
+## two-factor authentication
 
 You can use the tool with 2FA enabled on your Backbaze account. In order to do this, you'll need a copy of your Backblaze TOTP private key. If you already have 2FA enabled on your account, you might need to disable then re-enable it to get this key.
 
