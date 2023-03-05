@@ -1,5 +1,4 @@
-import mysql.connector as sql
-
+import mariadb
 
 class DataDumper():
 
@@ -19,7 +18,7 @@ class DataDumper():
 
   def connect_db(self):
 
-    self.connection = sql.connect(
+    self.connection = mariadb.connect(
     host = self.db_host,
     user = self.db_user,
     password = self.db_pwd)
