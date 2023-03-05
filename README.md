@@ -25,7 +25,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
     + [6. Run the docker-compose file](#6-run-the-docker-compose-file)
     + [7. Run the b2-transaction-tracker](#7-run-the-b2-transaction-tracker)
   * [Environment Variables](#environment-variables)
-  * [two-factor authentication](#two-factor-authentication)
+  * [Two-factor authentication](#two-factor-authentication)
 
 
 
@@ -120,7 +120,7 @@ To schedule automatic collection of api transactions I recommend using cron to s
 | B2_TOTP      | Backblaze 2FA Generator key (see instructions below)       | --- |
 
 
-## two-factor authentication
+## Two-factor authentication
 
 You can use the tool with 2FA enabled on your Backbaze account. In order to do this, you'll need a copy of your Backblaze TOTP private key. If you already have 2FA enabled on your account, you might need to disable then re-enable it to get this key.
 
