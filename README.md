@@ -2,6 +2,8 @@
 
 ## About The Project
 
+**Track your Backblaze b2 API transactions**.
+
 This is a simple tool built on [selenium](https://selenium-python.readthedocs.io/) to scrape api transaction counts from Backblaze's [b2 cloud-storage](https://www.backblaze.com/b2/cloud-storage.html) reports. Transactions are stored in SQL.
 
 Example:
@@ -28,7 +30,7 @@ Modern backup solutions can backup your data directly to the cloud using the b2 
    ```bash
    docker network create b2
    ```
-### 3. Export your B2 username / password
+### 3. Export your b2 username / password
 
    ```bash
    echo 'export B2_EMAIL="<YOUR EMAIL HERE>"' >> ~/.zshrc
